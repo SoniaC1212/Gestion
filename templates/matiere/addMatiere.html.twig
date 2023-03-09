@@ -1,0 +1,144 @@
+{% extends "base_admin.html.twig" %}
+
+{% block body %}
+<body class="ttr-opened-sidebar ttr-pinned-sidebar">
+{% include "partials/header_admin.html.twig" %}
+{% include "partials/navigation_panel.html.twig" %}
+<main class="ttr-wrapper">
+
+ <link href=" https://cdn.datatables.net/1.11.5/css/jquery.dataTables.min.css" rel="stylesheet">
+    <link href=" https://code.jquery.com/jquery-3.5.1.js" rel="stylesheet">
+    <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
+   
+<div style="margin-top: 150px ; margin-right: 350px">
+    <div class="col-lg-12">
+
+        <div class="card">
+            <div class="card-body">
+
+     <input type="text" class="form-control" placeholder="Search…" aria-label="Search"id="search">
+                
+
+
+
+                <script src="{{ asset('assets_back/js/jquery.min.js') }}"></script>
+
+
+           
+<style>
+    button {
+        background-color: #1ab394;
+        border-color: #1ab394;
+        color: #FFFFFF;
+        padding: 5px 10px;
+        font-size: 14px;
+        font-weight: 400;
+        line-height: 1.5;
+        border-radius: 3px;
+    }
+    table {
+   border: 1px dashed #ccc;
+  border-collapse: collapse;
+    }
+    table td, table th {
+  border: 1px dashed #ccc;
+  padding: 10px;
+  text-align: center;
+
+}
+
+    
+</style>
+<div class="ibox-content">
+                        <div class="row">
+                            <div class="col-sm-6 b-r"><h3 class="m-t-none m-b">ajouter des Matieres</h3>
+{{ form_start(formClass,{'attr': {'novalidate': 'novalidate'}}) }}
+                                        {{ form_label(formClass.libelle) }}
+                                        <br>
+                                        {{ form_widget(formClass.libelle) }}
+                                         {{ form_errors(formClass.libelle,{'attr':{'class':'text-danger'}}) }}
+                                        <br>
+                                        <br>
+                                        <br>
+
+                                        {{ form_label(formClass.cours) }}
+                                        <br>
+                                        {{ form_widget(formClass.cours) }}
+                                         {{ form_errors(formClass.cours,{'attr':{'class':'text-danger'}}) }}
+                                        <br>
+                                        <br>
+                                        <br>
+
+                                        
+                                        
+                                        {{ form_label(formClass.image) }}
+                                        <br>
+                                        {{ form_widget(formClass.image) }}
+                                         {{ form_errors(formClass.image,{'attr':{'class':'text-danger'}}) }}
+                                        <br>
+                                        <br>
+                                        <br>
+
+                                    {{ form_end(formClass) }}
+</div>
+                            <div class="col-sm-6"><h3>List des Matieres</h3>
+
+
+
+
+
+
+  <table  id="tableac" class="table table-striped" >                                    <th>  Id  </th>
+                                    <th>  libelle  </th>
+                                    <th>  cours  </th>
+                                    <th>  image  </th>
+                                    <th>  action  </th>
+                                    </tr>
+                                    <tr>
+                                    {% for i in Matiere %}
+                                        <td>{{i.id}}</td>
+                                        <td>{{i.libelle}}</td>
+                                         <td>
+                                        {% for element in i.cours %}
+                                            {{ element.Libelle }}<br>
+                                        {% endfor %}
+                                        </td>
+                                        <td><img src= "{{ asset('images/' ~ i.image) }}" style="width: 50px; height: auto;" /></td>
+                                        <td>
+                                            <a href="{{path('supprimerM',{'id':i.id}) }}" class="btn btn-white">Supprimer</a><br>
+                                            <a href="{{path('updatM',{'id':i.id}) }}" class="btn btn-white">modifier</a></td>
+                                        </tr>
+                                           <script>
+        $(document).ready(function(){
+            $('#search').keyup(function(){
+                search_table($(this).val());
+            });
+            function search_table(value){
+                $('#tableac tbody tr').each(function(){
+                    var found = 'false';
+                    $(this).each(function(){
+                        if($(this).text().toLowerCase().indexOf(value.toLowerCase()) >= 0)
+                        {
+                            found = 'true';
+                        }
+                    });
+                    if(found == 'true')
+                    {
+                        $(this).show();
+
+                    }
+                    else
+                    {
+                        $(this).hide();
+
+                    }
+                });
+            }
+        });
+    </script>
+                                    {%endfor %}
+
+                                </table>
+                                </div>
+                            </div>
+                                {% endblock %}

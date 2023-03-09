@@ -1,0 +1,102 @@
+{% extends "base_admin.html.twig" %}
+
+{% block body %}
+<body class="ttr-opened-sidebar ttr-pinned-sidebar">
+{% include "partials/header_admin.html.twig" %}
+{% include "partials/navigation_panel.html.twig" %}
+<main class="ttr-wrapper">
+
+
+
+<!-- Left sidebar menu end -->
+
+<!-- LAYER NR. 1 -->
+<main class="ttr-wrapper">
+    <div class="container-fluid">
+        <div class="db-breadcrumb">
+            <h4 class="breadcrumb-title"></h4>
+            <ul class="db-breadcrumb-list">
+                <li><a href="{{ path('app_home') }}"><i class="fa fa-home"></i>Home</a></li>
+                <li><a href="{{ path('app_dashboard') }}">Dashboard</a></li>
+
+            </ul>
+        </div>
+        <div class="wc-title">
+
+        </div>
+
+
+        <table class="table">
+            <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ document.id }}</td>
+            </tr>
+            <tr>
+                <th>Nomdocument</th>
+                <td>{{ document.nomdocument }}</td>
+            </tr>
+            <tr>
+                <th>Type</th>
+                <td>{{ document.type }}</td>
+            </tr>
+            <tr>
+                <th>Editeur</th>
+                <td>{{ document.editeur }}</td>
+            </tr>
+            <tr>
+                <th>Image</th>
+                <td>{{ document.image }}</td>
+            </tr>
+            <tr>
+                <th>Url</th>
+                <td>{{ document.url }}</td>
+            </tr>
+            </tbody>
+        </table>
+
+        <a href="{{ path('app_document_index') }}"><button class="btn">Back To List</button></a>
+
+        <a href="{{ path('app_document_edit', {'id': document.id}) }}"><button class="btn">edit</button></a>
+
+        {{ include('document/_delete_form.html.twig') }}
+
+
+
+        {% endblock %}
+
+        {% block javascript %}
+
+        <script src="{{ asset('assets/js/jquery.min.js') }})"></script>
+        <script src="{{ asset('assets/vendors/bootstrap/js/popper.min.js') }})"></script>
+        <script src="{{ asset('assets/vendors/bootstrap/js/bootstrap.min.js') }})"></script>
+        <script src="{{ asset('assets/vendors/bootstrap-select/bootstrap-select.min.js') }})"></script>
+        <script src="{{ asset('assets/vendors/bootstrap-touchspin/jquery.bootstrap-touchspin.js') }})"></script>
+        <script src="{{ asset('assets/vendors/magnific-popup/magnific-popup.js') }})"></script>
+        <script src="{{ asset('assets/vendors/counter/waypoints-min.js') }})"></script>
+        <script src="{{ asset('assets/vendors/counter/counterup.min.js') }})"></script>
+        <script src="{{ asset('assets/vendors/imagesloaded/imagesloaded.js') }})"></script>
+        <script src="{{ asset('assets/vendors/masonry/masonry.js') }})"></script>
+        <script src="{{ asset('assets/vendors/masonry/filter.js') }})"></script>
+        <script src="{{ asset('assets/vendors/owl-carousel/owl.carousel.js') }})"></script>
+        <script src="{{ asset('assets/vendors/scroll/scrollbar.min.js') }})"></script>
+        <script src="{{ asset('assets/js/functions.js') }})"></script>
+        <script src="{{ asset('assets/vendors/chart/chart.min.js') }})"></script>
+        <script src="{{ asset('assets/js/admin.js') }})"></script>
+        <script src="{{ asset('assets/vendors/switcher/switcher.js"') }})></script>
+
+{% endblock %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+

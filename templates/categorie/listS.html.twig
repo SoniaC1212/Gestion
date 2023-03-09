@@ -1,0 +1,48 @@
+{% extends "base_admin.html.twig" %}
+
+{% block body %}
+<body class="ttr-opened-sidebar ttr-pinned-sidebar">
+{% include "partials/header_admin.html.twig" %}
+{% include "partials/navigation_panel.html.twig" %}
+<main class="ttr-wrapper">
+
+ <div class="row" style="display: flex;align-items: center;justify-content: center;margin-top :150px">
+ <div class="col-lg-7">
+ <div class="card">
+ <div class="card-body">
+ <h5 class="card-title"> Liste des Categorie </h5>
+
+ <table class="table table-striped">
+ <thead>
+ <th>ID</th>
+ <th>Nom categorie</th>
+ <th>suppression</th>
+ <th>Modifier</th>
+
+ </tr>
+ </thead>
+ {% for s in categorie %}
+ <tr>
+ <td> {{s.id}}  </td>
+ <td> {{s.NomCategorie}}  </td>
+
+
+
+ <td><a href="{{path('ss',{'id':s.id} )}}">Delete</a></td>  
+  <td><a href="{{path('up',{'id':s.id} )}}">update</a></td> 
+
+ </tr>
+ {% endfor %}
+</tbody>
+  </table>
+ 
+    <a href="{{path('as')}}">ajouter categorie</a>
+   </div>
+    </div>
+
+
+
+ {% endblock %}
+
+
+ 

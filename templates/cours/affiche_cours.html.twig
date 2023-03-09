@@ -1,0 +1,42 @@
+{% extends 'base_back.html.twig' %}
+
+
+{% block body %}
+    <h1>Cour index</h1>
+
+    <table class="table">
+        <thead>
+        <tr>
+            <th>Id</th>
+            <th>libele</th>
+            <th>niveau</th>
+            <th>note</th>
+            <th>image</th>
+
+        </tr>
+        </thead>
+        <tbody>
+        {% for candidat in candidats %}
+            <tr>
+                <td>{{ candidat.id }}</td>
+                <td>{{ candidat.libelle }}</td>
+                <td>{{ candidat.niveau }}</td>
+
+                <td>{{ candidat.note }}</td>
+                <td><img src="{{ asset('images/' ~ candidat.image) }}" style="width: 10%; height: auto;" alt=""> </td>
+
+
+                <td>
+                    <button class="btn"><a href="{{ path('updatC', {'id': candidat.id}) }}">edit</a></button>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="6">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <button class="btn"><a  href="{{ path('app_addCours') }}" >Create new</a></button>
+{% endblock %}

@@ -1,0 +1,102 @@
+<nav class="ttr-sidebar-navi">
+    <ul>
+        <li>
+            <a href="index.html" class="ttr-material-button">
+
+                <a href="{{ path('admin_dashboard') }}" > <i class="ti-home"></i>Dashborad</a>
+            </a>
+        </li>
+        <li>
+            <a href="courses.html" class="ttr-material-button">
+                <span class="ttr-icon"><i class="ti-book"></i></span>
+                <span class="ttr-label">Courses</span>
+            </a>
+        </li>
+        <li>
+            <a href="{{ path('afficheall') }}" class="ttr-material-button">
+                <span class="ttr-icon"><i class="ti-user"></i></span>
+                <span class="ttr-label">Gestion User</span>
+                <span class="ttr-arrow-icon"><i class="fa fa-angle-down"></i></span>
+            </a>
+            <ul>
+                <li>
+
+                    <a  href="{{ path('afficheall') }}"  class="ttr-material-button"><span class="ttr-label"> <i class="ti-gallery"></i>Liste des utilisateurs</span></a>
+                </li>
+
+            </ul>
+        </li>
+
+        <li>
+            <a href="{{ path('app_candidat_index') }}" class="ttr-material-button">
+                <span class="ttr-icon"><i class="ti-book"></i></span>
+                <span class="ttr-label">Gestion Candidat</span>
+            </a>
+        </li>
+        <li>
+            <a href="{{ path('app_offre_index') }}" class="ttr-material-button">
+                <span class="ttr-icon"><i class="ti-book"></i></span>
+                <span class="ttr-label">Gestion offre</span>
+            </a>
+        </li>
+        <li>
+            <a href="{{ path('app_cours') }}" class="ttr-material-button">
+                <span class="ttr-icon"><i class="ti-book"></i></span>
+                <span class="ttr-label">Gestion Cours</span>
+            </a>
+        </li>
+        <li>
+            <a href="{{ path('app_matiere') }}" class="ttr-material-button">
+                <span class="ttr-icon"><i class="ti-book"></i></span>
+                <span class="ttr-label">Gestion matiere</span>
+            </a>
+        </li>
+
+        <li>
+            <a href="{{ path('app_produit') }}" class="ttr-material-button"> gestion produit
+                <span class="ttr-icon"><i class="ti-user"></i></span>
+
+                <span class="ttr-label"><a href="{{ path('a') }}">ajouter Produit</a></span>
+                <span class="ttr-arrow-icon"><i class="fa fa-angle-down"></i></span>
+            </a>
+            <ul>
+                <li>
+
+                    <a  href="{{ path('a') }}"  class="ttr-material-button"><span class="ttr-label"> <i class="ti-gallery"></i>ajouter produit</span></a>
+                </li>
+
+            </ul>
+        </li>
+        <li>
+            <a href="{{ path('list_produit') }}" class="ttr-material-button">
+                <span class="ttr-icon"><i class="ti-book"></i></span>
+                <span class="ttr-label">list produit</span>
+            </a>
+        </li>
+
+
+
+        <li>
+            <a href="{{ path('list_categorie') }}" class="ttr-material-button">
+                <span class="ttr-icon"><i class="ti-book"></i></span>
+                <span class="ttr-label">Gestion categorie</span>
+            </a>
+        </li>
+        <li>
+            <a href="{{ path('app_cart') }}" class="ttr-material-button">
+                <span class="ttr-icon"><i class="ti-book"></i></span>
+                <span class="ttr-label">Gestion panier</span>
+            </a>
+        </li>
+        <li>
+            <a  href="{{ path('app_logout') }}" class="ttr-material-button">
+                <span class="ttr-icon"><i class="ti-layout-accordion-list"></i></span>
+                <span class="ttr-label">Logout</span>
+            </a>
+        </li>
+
+        <li class="ttr-seperate"></li>
+    </ul>
+    <!-- sidebar menu end -->
+</nav>
+

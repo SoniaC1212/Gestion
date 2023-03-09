@@ -1,0 +1,154 @@
+{% extends "base_admin.html.twig" %}
+
+{% block body %}
+<body class="ttr-opened-sidebar ttr-pinned-sidebar">
+{% include "partials/header_admin.html.twig" %}
+{% include "partials/navigation_panel.html.twig" %}
+<main class="ttr-wrapper">
+
+    <title>document
+    </title>
+
+
+
+
+
+
+
+
+
+<style>
+    table {
+        border-collapse: collapse;
+    }
+    td,
+    th {
+        padding: 10px;
+        border-bottom: 2px solid #8ebf42;
+        text-align: center;
+    }
+</style>
+
+<!-- Left sidebar menu end -->
+
+<!-- LAYER NR. 1 -->
+<main class="ttr-wrapper">
+    <div class="container-fluid">
+        <div class="db-breadcrumb">
+            <h4 class="breadcrumb-title"></h4>
+            <ul class="db-breadcrumb-list">
+                <li><a {# href="{{ path('app_home') }}" #}><i class="fa fa-home"></i>Home</a></li>
+                <li><a href="{{ path('app_dashboard') }}">Dashboard Reclamaton</a></li>
+
+            </ul>
+        </div>
+        <div class="wc-title">
+
+
+        </div>
+
+
+        <table class="table">
+            <thead>
+            <tr>
+                <th>Nomdocument</th>
+                <th>Type</th>
+                <th>Editeur</th>
+                <th>actions</th>
+
+
+
+            </tr>
+            </thead>
+            <input type="text" name="search-form" id="search-form">
+
+            <tbody>
+            {% for commande in commandes %}
+                <tr>
+                    <td><a href="https://www.babelio.com/livres/Khadra-Ce-que-le-jour-doit-a-la-nuit/88871">{{ commande.nomdocument }}</a> </td>
+                    <td>{{ commande.type }}</td>
+                    <td>{{ commande.editeur }}</td>
+                    <td>
+                        <a class="btn btn-white" href="{{ path('app_commande_show', {'id': commande.id}) }}"><button class="btn">show</button></a>
+                        <a class="btn btn-white" href="{{ path('app_commande_edit', {'id': commande.id}) }}"><button class="btn">edit</button></a>
+
+
+
+                    </td>
+                </tr>
+            {% else %}
+                <tr>
+                    <td colspan="5">no records found</td>
+                </tr>
+            {% endfor %}
+            <div class="pagination">
+                {{ knp_pagination_render(commandes) }}
+            </div>
+            </tbody>
+        </table>
+        <table>
+            <tr>
+                <div class="col-12">
+                    <td><a class="btn btn-white" href="{{ path('app_commande_new') }}" ><button class="btn">create new</button></a></td>
+                </div>
+
+                <!-- <tr> <a  class="btn btn-white" href="{{ path('app_commande_index') }}" >Commande document</a></tr> -->
+        </table>
+
+
+
+      
+
+
+        </body>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+        <script >
+            var tableau = $('.table tbody').html();
+
+            $( "#search-form" ).keyup(function() {
+
+                $('.table tbody').empty();
+                var searchQuery = $(this).val();
+                if( searchQuery != ""){$.ajax({
+                    url: "{{ path('commande_search') }}",
+                    method: "POST",
+                    data: { search: searchQuery },
+                    success: function(response) {
+
+                        var row = '<tr><td>' + response.nom + '</td><td>' + response.editeur  + '</td><td>' + response.type + '</td> <td> <a class="btn btn-white" href="/commande/'+response.id+'/show">show</a> <a class="btn btn-white" href="/commande/'+response.id+'/edit">edit</a> </td></tr>';
+
+                        $('.table tbody').append(row);
+                    },
+                    complete:function(response) {
+
+                    },error(){
+
+                    }
+
+                });
+                }else{
+                    $('.table tbody').append(tableau);
+                }
+
+
+
+            });
+        </script>
+
+
+
+
+
+
+
+
+
+
+
+ {% endblock %}
+
+
+
+
+
+

@@ -1,0 +1,37 @@
+{% extends "base_admin.html.twig" %}
+
+{% block body %}
+<body class="ttr-opened-sidebar ttr-pinned-sidebar">
+{% include "partials/header_admin.html.twig" %}
+{% include "partials/navigation_panel.html.twig" %}
+<main class="ttr-wrapper">
+
+    <h1>matiere index</h1>
+
+    <table class="table">
+        <thead>
+        <tr>
+            <th>Id</th>
+            <th>libele</th>
+            <th>image</th>
+
+        </tr>
+        </thead>
+        <tbody>
+        {% for candidat in candidats %}
+            <tr>
+                <td>{{ candidat.libelle }}</td>
+                <td><img src="{{ asset('images/' ~ candidat.image) }}" style="width: 10%; height: auto;" alt=""> </td>
+                <td>
+                    <button class="btn"><a href="{{ path('updatM', {'id': candidat.id}) }}">edit</a></button>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="6">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    <button class="btn"><a  href="{{ path('app_addMatiere') }}" >Create new</a></button>
+{% endblock %}

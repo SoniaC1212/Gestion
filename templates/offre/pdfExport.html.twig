@@ -1,0 +1,25 @@
+{% extends "basepdf.html.twig" %}
+
+{% block body %}
+	<div>
+		<h1>Liste des offres</h1>
+		<table>
+			<thead>
+				<tr>
+					<th>Titre</th>
+					<th>Description</th>
+					<th>Propriétaire</th>
+				</tr>
+			</thead>
+			<tbody>
+				{% for offre in offres %}
+					<tr>
+						<td>{{ offre.titre }}</td>
+						<td>{{ offre.description }}</td>
+						<td>{{ offre.proprietaire }}</td>
+					</tr>
+				{% endfor %}
+			</tbody>
+		</table>
+	</div>
+{% endblock %}

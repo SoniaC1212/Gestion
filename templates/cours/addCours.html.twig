@@ -1,0 +1,98 @@
+{% extends "base_admin.html.twig" %}
+
+{% block body %}
+<body class="ttr-opened-sidebar ttr-pinned-sidebar">
+{% include "partials/header_admin.html.twig" %}
+{% include "partials/navigation_panel.html.twig" %}
+<main class="ttr-wrapper">
+
+<style>
+    button {
+        background-color: #1ab394;
+        border-color: #1ab394;
+        color: #FFFFFF;
+        padding: 5px 10px;
+        font-size: 14px;
+        font-weight: 400;
+        line-height: 1.5;
+        border-radius: 3px;
+    }
+    table {
+   border: 1px dashed #ccc;
+  border-collapse: collapse;
+    }
+    table td, table th {
+  border: 1px dashed #ccc;
+  padding: 10px;
+  text-align: center;
+}
+    
+</style>
+
+<div class="ibox-content">
+                        <div class="row">
+                            <div class="col-sm-6 b-r"><h3 class="m-t-none m-b">ajouter des Cours</h3>
+{{ form_start(formClass,{'attr': {'novalidate': 'novalidate'}}) }}
+                                        {{ form_label(formClass.libelle) }}
+                                        <br>
+                                        {{ form_widget(formClass.libelle) }}
+                                         {{ form_errors(formClass.libelle,{'attr':{'class':'text-danger'}}) }}
+                                        <br>
+                                        <br>
+
+                                        {{ form_label(formClass.niveau) }}
+                                        <br>
+                                        {{ form_widget(formClass.niveau) }}
+                                        {{ form_errors(formClass.niveau,{'attr':{'class':'text-danger'}}) }}
+                                        <br>
+                                        <br>
+                                
+                                        {{ form_label(formClass.note) }}
+                                        <br>
+                                        {{ form_widget(formClass.note) }}
+                                         {{ form_errors(formClass.note,{'attr':{'class':'text-danger'}}) }}
+                                        <br>
+                                        <br>
+                                        
+                                        {{ form_label(formClass.image) }}
+                                        <br>
+                                        {{ form_widget(formClass.image) }}
+                                         {{ form_errors(formClass.image,{'attr':{'class':'text-danger'}}) }}
+                                        <br>
+                                     
+                                        <br>
+
+                                    {{ form_end(formClass) }}
+</div>
+                            <div class="col-sm-6"><h3>List des Cours</h3>
+
+
+
+
+
+<table>
+                                    <tr>
+                                    <th>  Id  </th>
+                                    <th>  libelle  </th>
+                                    <th>  niveau  </th>
+                                    <th>  note </th>
+                                    <th>  image  </th>
+                                    <th>  action  </th>
+                                    </tr>
+                                    <tr>
+                                    {% for i in Cours %}
+                                        <td>{{i.id}}</td>
+                                        <td>{{i.libelle}}</td>
+                                        <td>{{i.niveau}}</td>
+                                        <td>{{i.note}}</td>
+                                        <td><img src= "{{ asset('images/' ~ i.image) }}" style="width: 50px; height: auto;" /></td>
+                                        <td>
+                                            <a href="{{path('supprimerC',{'id':i.id}) }}" class="btn btn-white">Supprimer</a><br>
+                                            <a href="{{path('updatC',{'id':i.id}) }}" class="btn btn-white">modifier</a></td>
+                                        </tr>
+                                    {%endfor %}
+
+                                </table>
+                                </div>
+                            </div>
+                                {% endblock %}

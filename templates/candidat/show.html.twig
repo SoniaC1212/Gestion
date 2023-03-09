@@ -1,0 +1,40 @@
+{% extends "base_admin.html.twig" %}
+
+{% block body %}
+<body class="ttr-opened-sidebar ttr-pinned-sidebar">
+{% include "partials/header_admin.html.twig" %}
+{% include "partials/navigation_panel.html.twig" %}
+<main class="ttr-wrapper">
+
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ candidat.id }}</td>
+            </tr>
+            <tr>
+                <th>FirstName</th>
+                <td>{{ candidat.FirstName }}</td>
+            </tr>
+            <tr>
+                <th>LastName</th>
+                <td>{{ candidat.LastName }}</td>
+            </tr>
+            <tr>
+                <th>Email</th>
+                <td>{{ candidat.Email }}</td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>{{ candidat.Description }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div align="center">
+        <button class="btn"><a href="{{ path('app_candidat_index') }}">back to list</a></button>
+        <button class="btn"><a href="{{ path('app_candidat_edit', {'id': candidat.id}) }}">edit</a></button>
+        {{ include('candidat/_delete_form.html.twig') }}
+    </div>
+{% endblock %}

@@ -1,0 +1,67 @@
+{% extends 'home/dashboard.html.twig' %}
+
+{% block title %}Reponse index{% endblock %}
+
+{% block section %}
+    <h1>Reponse index</h1>
+
+    <form id="search-form" action="{{ path('reponse_search') }}" method="get">
+        <div class="form-group">
+            <input type="text" name="q" class="form-control" value="{{ query }}">
+        </div>
+        <button type="submit" class="btn btn-primary">Search</button>
+    </form>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Cin</th>
+                <th>Username</th>
+                <th>Date</th>
+                <th>Satisfaction</th>
+                <th>Contenu</th>
+                <th>Reclamation</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+    <tbody id="search-results">
+        {% for reponse in reponses %}
+            <tr>
+                <td>{{ reponse.cin }}</td>
+                <td>{{ reponse.username }}</td>
+                <td>{{ reponse.date ? reponse.date|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ reponse.satisfaction }}</td>
+                <td>{{ reponse.contenu }}</td>
+                <td>{{ reponse.reclamation.cin }}</td>
+                <td>
+                    <a href="{{ path('app_reponse_show', {'id': reponse.id}) }}">show</a>
+                    <a href="{{ path('app_reponse_edit', {'id': reponse.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="7">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+		<tbody id="search"></tbody>
+    </table>
+
+    <a href="{{ path('app_reponse_new') }}">Create new</a>
+
+    <script>
+        $(function () {
+            $('#search-form').submit(function (e) {
+                e.preventDefault();
+
+                $.ajax({
+                    url: $(this).attr('action'),
+                    data: $(this).serialize(),
+                    success: function (data) {
+                        $('#search-results').html(data);
+                    }
+                });
+            });
+        });
+    </script>
+{% endblock %}

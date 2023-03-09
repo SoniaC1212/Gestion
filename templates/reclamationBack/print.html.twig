@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Reclamation Print</title>
+    <link rel="stylesheet" href="/style.css" media="all" />
+</head>
+<body>
+<header class="clearfix">
+    <h1 align="center">Edu4U Reclamations </h1>
+    <hr></hr>
+    <div><span>Reclamation </span> {{ reclamation.cin }} </div>
+    <hr></hr>
+    <div id="company" class="clearfix">
+        <div><span>Username: </span> {{ reclamation.username }}  </div>
+        <div><span>Email: </span> {{ reclamation.email }}  </div>
+        <div><span>Date: </span> {{ reclamation.date ? reclamation.date|date('Y-m-d') : '' }}  </div>
+        <div><span>Type: </span> {{ reclamation.type }}  </div>
+        <div><span>Description: </span> {{ reclamation.description }}  </div>
+        <hr></hr>
+    </div>
+</header>
+</main>
+
+</body>

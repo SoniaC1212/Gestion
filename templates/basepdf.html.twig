@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+{% block header %}
+	<header>
+		<div class="intro_price" style="color: purple;margin-left: 10px;margin-top: 10px">
+			<b>EnergyBox</b>
+		</div>
+		<div style="font-size: 15px;margin-left: 10px">
+			Adresse : Esprit Technopole Ghazela Ariana</div>
+		<div style="font-size: 15px;margin-left: 10px">
+			Numéro : +216 xx xxx xxx</div>
+		<div style="font-size: 15px;margin-left: 10px">
+			E-mail : EnergyBox@gmail.com</div>
+	</header>
+{% endblock %}
+
+{% block footer %}
+	<footer></footer>
+{% endblock %}
+
+{% block meta %}
+	<!-- META ============================================= -->
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="keywords" content=""/>
+	<meta name="author" content=""/>
+	<meta
+	name="robots" content=""/>
+
+	<!-- DESCRIPTION -->
+	<meta
+	name="description" content="EduChamp : Education HTML Template"/>
+
+	<!-- OG -->
+	<meta property="og:title" content="EduChamp : Education HTML Template"/>
+	<meta property="og:description" content="EduChamp : Education HTML Template"/>
+	<meta property="og:image" content=""/>
+	<meta
+	name="format-detection" content="telephone=no">
+
+	<!-- FAVICONS ICON ============================================= -->
+	<link rel="icon" href={{asset('./assets/FrontOffice/images/favicon.ico')}} type="image/x-icon"/>
+	<link
+	rel="shortcut icon" type="image/x-icon" href={{asset('./assets/FrontOffice/images/favicon.png')}}/>
+
+	<!-- PAGE TITLE HERE ============================================= -->
+	{% block title %}
+		<title>EduChamp : Education HTML Template</title>
+	{% endblock %}
+
+	<!-- MOBILE SPECIFIC ============================================= -->
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+{% endblock %}
+
+
+{% block stylesheets %}
+	<!-- All PLUGINS CSS ============================================= -->
+	<link
+	rel="stylesheet" type="text/css" href={{ asset('./assets/FrontOffice/css/assets.css') }}>
+
+	<!-- TYPOGRAPHY ============================================= -->
+	<link
+	rel="stylesheet" type="text/css" href={{ asset('./assets/FrontOffice/css/typography.css') }}>
+
+	<!-- SHORTCODES ============================================= -->
+	<link
+	rel="stylesheet" type="text/css" href={{ asset('./assets/FrontOffice/css/shortcodes/shortcodes.css') }}>
+
+	<!-- STYLESHEETS ============================================= -->
+	<link rel="stylesheet" type="text/css" href={{ asset('./assets/FrontOffice/css/style.css') }}>
+	<link
+	class="skin" rel="stylesheet" type="text/css" href={{ asset('./assets/FrontOffice/css/color/color-1.css') }}>
+
+	<!-- REVOLUTION SLIDER CSS ============================================= -->
+	<link rel="stylesheet" type="text/css" href={{ asset('./assets/FrontOffice/vendors/revolution/css/layers.css') }}>
+	<link rel="stylesheet" type="text/css" href={{ asset('./assets/FrontOffice/vendors/revolution/css/settings.css') }}>
+	<link
+	rel="stylesheet" type="text/css" href={{ asset('./assets/FrontOffice/vendors/revolution/css/navigation.css') }}>
+<!-- REVOLUTION SLIDER END -->
+{% endblock %}
+<body>
+	{% block body %}{% endblock %}
+</body>

@@ -1,0 +1,45 @@
+{% extends 'base_front.html.twig' %}
+
+{% block title %}Matiere{% endblock %}
+
+{% block body %}
+		
+    <!-- Popular Courses -->
+			<div class="section-area section-sp2 popular-courses-bx">
+                <div class="container">
+					<div class="row">
+						<div class="col-md-12 heading-bx left">
+					
+							<h2 class="title-head">Les <span>Matieres</span></h2>
+								 <input type="text" class="form-control" placeholder="Search…" aria-label="Search"id="search">
+						</div>
+		
+					</div>
+					
+					<div class="row">
+					
+					<div class="courses-carousel owl-carousel owl-btn-1 col-12 p-lr0">
+					{% for i in Matiere %}
+						<div class="item">
+							<div class="cours-bx">
+								<div class="action-box">
+									<img src="{{ asset('images/' ~ i.image) }}" style="width: 100%; height: auto;" alt="">
+									
+								</div>
+								<div class="info-bx text-center">
+									<h4><a href="#">{{i.libelle}}</a></h4>
+									<h6><span>Les Cours : </span></h6>
+									{% for element in i.cours %}
+									<span>{{ element.libelle }}<br></span>
+									{% endfor %}<br>
+								</div>
+								
+							</div>
+						</div>
+						{% endfor %}
+					</div>
+					</div>
+				</div>
+			</div>
+			<!-- Popular Courses END -->
+{% endblock %}

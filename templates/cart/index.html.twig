@@ -1,0 +1,50 @@
+{% extends "base_admin.html.twig" %}
+
+{% block body %}
+<body class="ttr-opened-sidebar ttr-pinned-sidebar">
+{% include "partials/header_admin.html.twig" %}
+{% include "partials/navigation_panel.html.twig" %}
+<main class="ttr-wrapper">
+
+    <div class="bg-light p-3">
+        <h1>Votre panier</h1>
+    </div>
+
+    {% if items | length > 0 %}
+     <table class="table">
+         <thread>
+             <tr>
+                 <th>Produit</th>
+                 <th>Prix</th>
+                 <th>Quantité</th>
+                 <th>Total</th>
+                 <th></th>
+             </tr>
+         </thread>
+         <tbody>
+         {% for item in items %}
+             <tr>
+                 <td>{{ item.produit.NomProduit }}</td>
+                 <td>{{ item.produit.PrixProduit }}</td>
+                 <td>{{ item.quantity }}</td>
+                 <td>{{ item.produit.PrixProduit * item.quantity }}</td>
+                 <td>
+                     <a href="{{ path('remove_cart', {'id' : item.produit.id})}}" class="btn btn-danger btn-sm">
+                         <i class="fas fa-trash"></i>
+                     </a>
+                 </td>
+             </tr>
+         {% endfor %}
+         </tbody>
+         <tfoot>
+         <tr>
+             <td colspan="3" class="text-right">Total: </td>
+             <td>{{ total }}</td>
+             <td></td>
+         </tr>
+         </tfoot>
+     </table>
+    {% else %}
+    <p>Surprise, c'est vide !</p>
+    {% endif %}
+{% endblock %}

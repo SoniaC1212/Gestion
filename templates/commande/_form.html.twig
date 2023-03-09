@@ -1,0 +1,88 @@
+
+
+
+        <div class="db-breadcrumb">
+
+            <ul class="db-breadcrumb-list">
+                <li><a href="#"><i class="fa fa-home"></i>Home</a></li>
+                <li>Add Commande</li>
+            </ul>
+        </div>
+        <div class="row">
+            <!-- Your Profile Views Chart -->
+            <div class="col-lg-12 m-b30">
+                <div class="widget-box">
+                    <div class="wc-title">
+                        <h4>Add listing</h4>
+                    </div>
+                    <div class="widget-inner">
+
+                        <div class="row">
+
+
+                            {{ form_start(form) }}
+                            <div class="seperator"></div>
+
+                            <div class="col-12 m-t20">
+                                <div class="ml-auto m-b5">
+                                    <h3>1. </h3>
+                                </div>
+                            </div>
+
+
+
+
+                            <div class="form-group col-6">
+                                <label class="col-form-label">Nom du document</label>
+                                <div>
+                                    {{ form_widget(form.nomdocument , {'attr': {'class':
+                                        'form-control'}}) }}
+                                </div>
+                            </div>
+                            <div class="form-group col-6">
+                                <label class="col-form-label">type</label>
+                                <div>
+                                    {{ form_widget(form.type , {'attr': {'class':
+                                        'form-control'}}) }}
+                                </div>
+                            </div>
+                            <div class="form-group col-6">
+                                <label class="col-form-label">Editeur</label>
+                                <div>
+                                    {{ form_widget(form.editeur , {'attr': {'class':
+                                        'form-control'}}) }}
+                                </div>
+                            </div>
+
+
+
+
+
+
+
+                            <button class="btn">{{ button_label|default('Save') }}</button>
+                            {{ form_end(form) }}
+
+
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <!-- Your Profile Views Chart END-->
+        </div>
+    </div>
+</main>
+<div class="ttr-overlay"></div>
+
+
+
+
+
+
+
+
+
+
+
+

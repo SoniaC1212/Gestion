@@ -1,0 +1,116 @@
+{% extends "base_admin.html.twig" %}
+
+{% block body %}
+<body class="ttr-opened-sidebar ttr-pinned-sidebar">
+{% include "partials/header_admin.html.twig" %}
+{% include "partials/navigation_panel.html.twig" %}
+<main class="ttr-wrapper">
+
+
+<div style="display: flex;align-items: center;justify-content: center;margin-top :150px">
+
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">Modifier produits :</h5>
+
+              <!-- General Form Elements -->
+
+                
+
+              {{ form_start(f) }}
+                <div class="row mb-3">
+                  <label for="inputText" class="col-sm-7 col-form-label">Nom</label>
+                  <div class="col-sm-10">
+              {{ form_widget(f.NomProduit,{'attr': {'class':'form-control'}}) }}
+                  </div>
+                </div>
+
+                 {{ form_start(f) }}
+                <div class="row mb-3">
+                  <label for="inputText" class="col-sm-7 col-form-label">Prix</label>
+                  <div class="col-sm-10">
+              {{ form_widget(f.PrixProduit,{'attr': {'class':'form-control'}}) }}
+                  </div>
+                </div>
+
+                   {{ form_start(f) }}
+                <div class="row mb-3">
+                  <label for="inputText" class="col-sm-7 col-form-label">Categorie</label>
+                  <div class="col-sm-10">
+              {{ form_widget(f.categorie,{'attr': {'class':'form-control'}}) }}
+                  </div>
+                </div>
+
+
+                 
+
+
+              
+
+
+                 {{ form_start(f) }}
+                <div class="row mb-3">
+                  <label for="inputText" class="col-sm-7 col-form-label">quantite produit</label>
+                  <div class="col-sm-10">
+              {{ form_widget(f.QuantiteProduit,{'attr': {'class':'form-control'}}) }}
+                  </div>
+                </div>
+
+
+                 {{ form_start(f) }}
+                <div class="row mb-3">
+                  <label for="inputText" class="col-sm-7 col-form-label">Image</label>
+                  <div class="col-sm-10">
+              {{ form_widget(f.ImageProduit,{'attr': {'class':'form-control'}}) }}
+                  </div>
+                </div>
+
+               
+
+                  {{ form_start(f) }}
+                <div class="row mb-3">
+                  <label for="inputText" class="col-sm-7 col-form-label">Description</label>
+                  <div class="col-sm-10">
+              {{ form_widget(f.DescriptionProduit,{'attr': {'class':'form-control'}}) }}
+                  </div>
+                </div>
+              
+                  {{ form_start(f) }}
+
+             <div class="row mb-3">
+                  <label for="inputNumber" class="col-sm-2 col-form-label">File Upload</label>
+                  <div class="col-sm-10">
+                    <input class="form-control" type="file" id="formFile">
+                  </div>
+                </div>
+
+                  <div class="col-sm-10">
+              {{ form_widget(f.modifier,{'attr': {'class':'btn btn-primaryl'}}) }}
+                  </div>
+                </div> 
+
+                {{form_end(f) }}
+
+
+
+               
+                
+              
+               
+
+             
+
+             
+
+               
+
+                
+
+              </form><!-- End General Form Elements -->
+
+            </div>
+          </div>
+
+        </div>
+
+{% endblock %}

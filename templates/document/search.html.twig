@@ -1,0 +1,29 @@
+{% extends "base_admin.html.twig" %}
+
+{% block body %}
+<body class="ttr-opened-sidebar ttr-pinned-sidebar">
+{% include "partials/header_admin.html.twig" %}
+{% include "partials/navigation_panel.html.twig" %}
+<main class="ttr-wrapper">
+
+    <h1>Rechercher un document</h1>
+
+    {{ form_start(form) }}
+
+    {{ form_row(form.nomdocument) }}
+    {{ form_row(form.editeur) }}
+    {{ form_row(form.type) }}
+
+    <button type="submit" class="btn btn-primary">Rechercher</button>
+
+    {{ form_end(form) }}
+
+    {% if documents|length > 0 %}
+        <h2>Résultats de la recherche :</h2>
+        <ul>
+            {% for document in documents %}
+                <li>{{ document.nomdocument }} - {{ document.editeur }} - {{ document.type }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+{% endblock %}

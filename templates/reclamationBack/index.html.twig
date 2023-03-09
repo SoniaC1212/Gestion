@@ -1,0 +1,65 @@
+{% extends 'home/dashboard.html.twig' %}
+
+{% block title %}Reclamation index{% endblock %}
+
+{% block stylesheets %}
+
+	<link rel="stylesheet" href="{{ asset('back/css/style.css') }}"/>
+{% endblock %}
+
+{% block section %}
+<div class="table-wrapper" style="margin :50px;">
+
+    <h1>Reclamation index</h1>
+    
+	<div id="div_chart"></div>
+
+	<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+	<script type="text/javascript">
+		{{ gc_draw(piechart, "div_chart") }}</script>
+
+    <a class="btn btn-primary" href="{{path('sort_by_asc_date')}}">Tri Ascendant par date</a>
+    <a class="btn btn-primary" href="{{path('sort_by_desc_date')}}">Tri Descendant par date</a>
+
+	{{ knp_pagination_render(reclamations) }}
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Cin</th>
+                <th>Username</th>
+                <th>Email</th>
+                <th>Date</th>
+                <th>Type</th>
+                <th>Description</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+    <tbody id="search-results">
+        {% for reclamation in reclamations %}
+            <tr>
+                <td>{{ reclamation.cin }}</td>
+                <td>{{ reclamation.username }}</td>
+                <td>{{ reclamation.email }}</td>
+                <td>{{ reclamation.date ? reclamation.date|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ reclamation.type }}</td>
+                <td>{{ reclamation.description }}</td>
+                <td>
+					<a href="{{ path('print_reclamation',{'id':reclamation.id}) }}">export</a>
+                    <a href="{{ path('admin_reclamation_show', {'id': reclamation.id}) }}">show</a>
+                    <a href="{{ path('admin_reclamation_edit', {'id': reclamation.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="8">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+		<tbody id="search"></tbody>
+    </table>
+	{{ knp_pagination_render(reclamations) }}
+
+    <a href="{{ path('admin_reclamation_new') }}">Create new</a>
+    {# <a href="{{ path('print_reclamations') }}">Export all reclamations</a> #}
+    </div>
+{% endblock %}

@@ -1,0 +1,170 @@
+{% extends "base_Front.html.twig" %}
+
+{% block body %}
+
+<style>
+    table {
+        border-collapse: collapse;
+    }
+    td,
+    th {
+        padding: 10px;
+        border-bottom: 2px solid #8ebf42;
+        text-align: center;
+    }
+</style>
+
+
+    <!-- Left sidebar menu end -->
+
+    <!-- LAYER NR. 1 -->
+    <main class="ttr-wrapper">
+        <div class="container-fluid">
+            <div class="db-breadcrumb">
+                <h4 class="breadcrumb-title"></h4>
+                <ul class="db-breadcrumb-list">
+                    <li><a  href="{{ path('admin_dashboard') }}" ><i class="fa fa-home"></i>Home</a></li>
+                    <li><a href="{{ path('app_dashboard') }}">Dashboard</a></li>
+
+                </ul>
+            </div>
+            <div class="wc-title">
+
+
+            </div></div>
+
+
+            <table class="table">
+                <thead>
+                <tr>
+                    <th>Nomdocument</th>
+                    <th>Type</th>
+                    <th>Editeur</th>
+                    <th>  image  </th>
+                    <th>Url</th>
+                    <th>actions</th>
+
+
+
+
+                </tr>
+                </thead>
+                <input type="text" name="search-form" id="search-form">
+
+                <tbody>
+                {% for document in documents %}
+                    <tr>
+                        <td><a href="https://www.babelio.com/livres/Khadra-Ce-que-le-jour-doit-a-la-nuit/88871">{{ document.nomdocument }}</a> </td>
+                        <td>{{ document.type }}</td>
+                        <td>{{ document.editeur }}</td>
+                        <td>
+
+                            <img src="{{ asset('uploads/documents_images/' ~ document.image) }}"  width="60" height="60">
+                        </td>
+                        <td>{% if document.url %}
+                                <a href="{{ document.url | raw }}" target="_blank">{{ document.url }}</a>
+                            {% endif %}</td>
+
+                        <td>
+                            <a class="btn btn-white" href="{{ path('app_document_show', {'id': document.id}) }}"><button class="btn">show</button></a>
+                            <a class="btn btn-white" href="{{ path('app_document_edit', {'id': document.id}) }}"><button class="btn">edit</button></a>
+
+
+
+                        </td>
+                    </tr>
+                {% else %}
+                    <tr>
+                        <td colspan="5">no records found</td>
+                    </tr>
+                {% endfor %}
+                <div class="pagination">
+                    {{ knp_pagination_render(documents) }}
+                </div>
+                </tbody>
+            </table>
+            <table>
+                <tr>
+                    <div class="col-12">
+                        <td><a class="btn btn-white" href="{{ path('app_document_new') }}" ><button class="btn">Create New</button></a></td>
+                    </div>
+
+               <!-- <tr> <a  class="btn btn-white" href="{{ path('app_commande_index') }}" >Commande document</a></tr> -->
+            </table>
+
+    </main>
+
+{% endblock %}
+
+{% block script %}
+
+            </body>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+<script >
+    var tableau = $('.table tbody').html();
+
+    $( "#search-form" ).keyup(function() {
+
+        $('.table tbody').empty();
+        var searchQuery = $(this).val();
+        if( searchQuery != ""){$.ajax({
+            url: "{{ path('document_search') }}",
+            method: "POST",
+            data: { search: searchQuery },
+            success: function(response) {
+
+                var row = '<tr><td>' + response.nom + '</td><td>' + response.editeur  + '</td><td>' + response.type + '</td> <td> <a class="btn btn-white" href="/commande/'+response.id+'/show">show</a> <a class="btn btn-white" href="/commande/'+response.id+'/edit">edit</a> </td></tr>';
+
+                $('.table tbody').append(row);
+            },
+            complete:function(response) {
+
+            },error(){
+
+            }
+
+        });
+        }else{
+            $('.table tbody').append(tableau);
+        }
+
+
+
+    });
+</script>
+
+
+
+            <script src="{{ asset('assets/js/jquery.min.js') }})"></script>
+<script src="{{ asset('assets/vendors/bootstrap/js/popper.min.js') }})"></script>
+<script src="{{ asset('assets/vendors/bootstrap/js/bootstrap.min.js') }})"></script>
+<script src="{{ asset('assets/vendors/bootstrap-select/bootstrap-select.min.js') }})"></script>
+<script src="{{ asset('assets/vendors/bootstrap-touchspin/jquery.bootstrap-touchspin.js') }})"></script>
+<script src="{{ asset('assets/vendors/magnific-popup/magnific-popup.js') }})"></script>
+<script src="{{ asset('assets/vendors/counter/waypoints-min.js') }})"></script>
+<script src="{{ asset('assets/vendors/counter/counterup.min.js') }})"></script>
+<script src="{{ asset('assets/vendors/imagesloaded/imagesloaded.js') }})"></script>
+<script src="{{ asset('assets/vendors/masonry/masonry.js') }})"></script>
+<script src="{{ asset('assets/vendors/masonry/filter.js') }})"></script>
+<script src="{{ asset('assets/vendors/owl-carousel/owl.carousel.js') }})"></script>
+<script src="{{ asset('assets/vendors/scroll/scrollbar.min.js') }})"></script>
+<script src="{{ asset('assets/js/functions.js') }})"></script>
+<script src="{{ asset('assets/vendors/chart/chart.min.js') }})"></script>
+<script src="{{ asset('assets/js/admin.js') }})"></script>
+<script src="{{ asset('assets/vendors/switcher/switcher.js"') }})></script>
+
+{% endblock %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
